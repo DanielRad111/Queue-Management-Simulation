@@ -24,7 +24,6 @@ public class Scheduler {
             Thread thread = new Thread(server);
             thread.start();
         }
-        //default
         this.strategy = new TimeStrategy();
     }
 

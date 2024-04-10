@@ -20,7 +20,6 @@ public class Generator {
     private Integer minServiceTime;
     private Integer maxArrivalTime;
     private Integer maxServiceTime;
-    private List<Server> servers;
     private int maxClientsPerServer;
 
     public Generator(Random random, Integer numberOfClients, Integer numberOfQueues, Integer maxSimulationTime, Integer minArrivalTime, Integer maxArrivalTime, Integer minServiceTime, Integer maxServiceTime, int maxClientsPerServer) {
@@ -49,14 +48,6 @@ public class Generator {
             clients.add(generateRandomClient());
         }
         return clients;
-    }
-
-    public void initializeServers() {
-        servers = new ArrayList<>();
-        for (int i = 0; i < numberOfQueues; i++) {
-            Server server = new Server(maxClientsPerServer);
-            servers.add(server);
-        }
     }
 
 
@@ -88,7 +79,4 @@ public class Generator {
         return maxServiceTime;
     }
 
-    public List<Server> getServers() {
-        return servers;
-    }
 }

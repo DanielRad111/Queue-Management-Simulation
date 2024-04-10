@@ -12,14 +12,14 @@ public class TimeStrategy implements Strategy{
 
     @Override
     public void addClient(List<Server> servers, Client client) {
-        int minWaitingTime = servers.getFirst().getWaitingTime();
-        Server selectedServer = servers.getFirst();
-        for (Server server : servers) {
-            if (server.getWaitingTime() < minWaitingTime) {
-                minWaitingTime = server.getWaitingTime();
-                selectedServer = server;
+        Server server  = servers.getFirst();
+        int index = servers.indexOf(server);
+        for (Server s : servers) {
+            if(s.getWaitingTime() < server.getWaitingTime()) {
+                server = s;
+                index = servers.indexOf(s);
             }
         }
-        selectedServer.addClient(client);
+        servers.get(index).addClient(client);
     }
 }

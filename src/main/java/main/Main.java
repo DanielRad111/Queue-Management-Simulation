@@ -15,7 +15,7 @@ public class Main {
         Integer numberOfQueues = 2;
         Integer maxSimulationTime = 100;
         Integer minArrivalTime = 2;
-        Integer maxArrivalTime = 30;
+        Integer maxArrivalTime = 10;
         Integer minServiceTime = 2;
         Integer maxServiceTime = 4;
         int maxClientsPerServer = 3;

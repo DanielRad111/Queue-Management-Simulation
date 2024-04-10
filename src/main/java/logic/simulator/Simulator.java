@@ -13,10 +13,17 @@ import java.util.Random;
 
 public class Simulator implements Runnable{
 
+    private static int currentTime;
+
+    public static int getCurrentTime() {
+        return currentTime;
+    }
+
     private Generator generator;
     private Scheduler scheduler;
 
     public Simulator(Generator generator, Scheduler scheduler) {
+        currentTime = 0;
         this.generator = generator;
         this.scheduler = scheduler;
     }
@@ -33,9 +40,8 @@ public class Simulator implements Runnable{
 
     @Override
     public void run() {
-        int currentTime = 0;
+        currentTime = 0;
         List<Client> clients = generator.generateRandomClients(generator.getNumberOfClients());
-        generator.initializeServers();
         while(currentTime < generator.getMaxSimulationTime()){
             Iterator<Client> iterator = clients.iterator();
             while (iterator.hasNext()) {
@@ -46,14 +52,14 @@ public class Simulator implements Runnable{
                 }
             }
             try {
-                Thread.sleep(2000);
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
 
             System.out.println("Time " + currentTime);
             System.out.println("Waiting clients: " + clients);
-            System.out.println("Servers: " + generator.getServers());
+            System.out.println("Servers: " + scheduler.getServers());
 
             currentTime++;
         }

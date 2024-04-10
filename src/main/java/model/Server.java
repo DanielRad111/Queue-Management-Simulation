@@ -1,5 +1,7 @@
 package model;
 
+import logic.simulator.Simulator;
+
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -19,9 +21,14 @@ public class Server implements Runnable{
     public void run(){
         while(!Thread.currentThread().isInterrupted()){
             try{
-                Client client = clients.take();
-                Thread.sleep(client.getServiceTime());
-                waitingPeriod.addAndGet(client.getServiceTime());
+                Client client = clients.peek();
+                if(client != null) {
+                    if(client.getServiceTime() == 0){
+                        clients.take();}
+//                    }else{
+//                        clients.peek().setServiceTime(clients.peek().getServiceTime()-1);
+//                    }
+                }
             }catch (InterruptedException e){
                 Thread.currentThread().interrupt();
             }
@@ -32,7 +39,7 @@ public class Server implements Runnable{
             if (clients.size() < maxClientsPerServer) {
                 try {
                     clients.put(client);
-                    calculateTotalWaitingTime();
+                    waitingPeriod.addAndGet(client.getServiceTime());
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
                 }
@@ -43,14 +50,6 @@ public class Server implements Runnable{
 
     public Client[] getClients() {
         return clients.toArray(new Client[0]);
-    }
-
-    public void calculateTotalWaitingTime() {
-        int totalWaitingTime = 0;
-        for (Client client : clients) {
-            totalWaitingTime += client.getServiceTime();
-        }
-        waitingPeriod.set(totalWaitingTime);
     }
 
     public int getWaitingTime() {
