@@ -22,6 +22,7 @@ public class Main {
         int maxNoServers = 2;
         Generator generator = new Generator(random, numberOfClients, numberOfQueues, maxSimulationTime, minArrivalTime, maxArrivalTime, minServiceTime, maxServiceTime, maxClientsPerServer);
         Scheduler scheduler = new Scheduler(maxNoServers, maxClientsPerServer);
+        scheduler.serversInitializer();
         Simulator simulator = new Simulator(generator, scheduler);
         simulator.run();
     }

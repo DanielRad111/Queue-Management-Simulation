@@ -16,31 +16,36 @@ public class Scheduler {
     private int maxClientsPerServer;
     private Strategy strategy;
 
-    public Scheduler(int maxNoServers, int maxClientsPerServer){
+    public Scheduler(int maxNoServers, int maxClientsPerServer) {
+        this.maxNoServers = maxNoServers;
+        this.maxClientsPerServer = maxClientsPerServer;
+        this.strategy = new TimeStrategy();//default strategy
+    }
+
+    public void serversInitializer() {
         this.servers = new ArrayList<>();
-        for(int i = 0; i < maxNoServers; i++){
+        for (int i = 0; i < maxNoServers; i++) {
             Server server = new Server(maxClientsPerServer);
             servers.add(server);
             Thread thread = new Thread(server);
             thread.start();
         }
-        this.strategy = new TimeStrategy();
     }
 
-    public void changeStrategy(SelectionPolicy policy){
-        if(policy == SelectionPolicy.SHORTEST_QUEUE){
+    public void changeStrategy(SelectionPolicy policy) {
+        if (policy == SelectionPolicy.SHORTEST_QUEUE) {
             strategy = new ShortestQueueStrategy();
         }
-        if(policy == SelectionPolicy.SHORTEST_TIME){
+        if (policy == SelectionPolicy.SHORTEST_TIME) {
             strategy = new TimeStrategy();
         }
     }
 
-    public void dispatchClient(Client client){
+    public void dispatchClient(Client client) {
         strategy.addClient(servers, client);
     }
 
-    public List<Server> getServers(){
+    public List<Server> getServers() {
         return servers;
     }
 }

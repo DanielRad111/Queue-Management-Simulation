@@ -7,7 +7,6 @@ public class Client {
 
     private int serviceTime;
 
-    private int remainingServiceTime;
 
     public Client(int id, int arrivalTime, int serviceTime) {
         this.id = id;
@@ -23,8 +22,10 @@ public class Client {
         return serviceTime;
     }
 
-    public void setServiceTime(int serviceTime) {
-        this.serviceTime = serviceTime;
+    public void decrementServiceTime() {
+        if (serviceTime > 0) {
+            serviceTime--;
+        }
     }
 
     @Override

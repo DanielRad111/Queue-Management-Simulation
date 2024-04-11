@@ -35,16 +35,16 @@ public class Generator {
         this.maxClientsPerServer = maxClientsPerServer;
     }
 
-    public Client generateRandomClient(){
+    public Client generateRandomClient() {
         int id = idCopy++;
-        int arrivalTime = random.nextInt(maxArrivalTime-minArrivalTime)+minArrivalTime;
-        int serviceTime = random.nextInt(maxServiceTime-minServiceTime)+minServiceTime;
+        int arrivalTime = random.nextInt(maxArrivalTime - minArrivalTime) + minArrivalTime;
+        int serviceTime = random.nextInt(maxServiceTime - minServiceTime) + minServiceTime;
         return new Client(id, arrivalTime, serviceTime);
     }
 
-    public List<Client> generateRandomClients(int numClients){
+    public List<Client> generateRandomClients(int numClients) {
         List<Client> clients = new ArrayList<>();
-        for(int i = 0; i < numClients; i++){
+        for (int i = 0; i < numClients; i++) {
             clients.add(generateRandomClient());
         }
         return clients;
@@ -78,5 +78,4 @@ public class Generator {
     public Integer getMaxServiceTime() {
         return maxServiceTime;
     }
-
 }

@@ -6,7 +6,7 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class Server implements Runnable{
+public class Server implements Runnable {
     private BlockingQueue<Client> clients;
     private AtomicInteger waitingPeriod;
     int maxClientsPerServer;
@@ -18,24 +18,30 @@ public class Server implements Runnable{
     }
 
     @Override
-    public void run(){
-        while(!Thread.currentThread().isInterrupted()){
-            try{
+    public void run() {
+        while (true) {
+            try {
                 Client client = clients.peek();
-                if(client != null) {
-                    if(client.getServiceTime() == 0){
-                        clients.take();}
-//                    }else{
-//                        clients.peek().setServiceTime(clients.peek().getServiceTime()-1);
-//                    }
+                if (client != null) {
+                    Thread.sleep(1000);
+                    client.decrementServiceTime();
+                    synchronized (waitingPeriod) {
+                        waitingPeriod.decrementAndGet();
+                    }
+                    if (client.getServiceTime() == 0) {
+                        clients.poll();
+                    }
+                } else {
+                    Thread.sleep(1000);
                 }
-            }catch (InterruptedException e){
-                Thread.currentThread().interrupt();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
     }
 
     public void addClient(Client client) {
+        synchronized (waitingPeriod) {
             if (clients.size() < maxClientsPerServer) {
                 try {
                     clients.put(client);
@@ -46,6 +52,20 @@ public class Server implements Runnable{
             } else {
                 System.out.println("Server is full. Client not added.");
             }
+        }
+    }
+
+    public void removeClient(Client client) {
+        synchronized (waitingPeriod) {
+            Client currentClient = clients.poll();
+            if (currentClient != null) {
+                waitingPeriod.addAndGet(-currentClient.getServiceTime());
+            }
+        }
+    }
+
+    public Client getCurrentClient() {
+        return clients.peek();
     }
 
     public Client[] getClients() {
