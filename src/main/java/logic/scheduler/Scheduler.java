@@ -19,7 +19,7 @@ public class Scheduler {
     public Scheduler(int maxNoServers, int maxClientsPerServer) {
         this.maxNoServers = maxNoServers;
         this.maxClientsPerServer = maxClientsPerServer;
-        this.strategy = new TimeStrategy();//default strategy
+        this.strategy = new ShortestQueueStrategy();//default strategy
     }
 
     public void serversInitializer() {
