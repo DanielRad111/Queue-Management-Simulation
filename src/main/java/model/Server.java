@@ -55,19 +55,6 @@ public class Server implements Runnable {
         }
     }
 
-    public void removeClient(Client client) {
-        synchronized (waitingPeriod) {
-            Client currentClient = clients.poll();
-            if (currentClient != null) {
-                waitingPeriod.addAndGet(-currentClient.getServiceTime());
-            }
-        }
-    }
-
-    public Client getCurrentClient() {
-        return clients.peek();
-    }
-
     public Client[] getClients() {
         return clients.toArray(new Client[0]);
     }

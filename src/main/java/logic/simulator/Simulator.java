@@ -1,17 +1,14 @@
 package logic.simulator;
 
 import logic.generator.Generator;
+import logic.logger.Logger;
 import logic.scheduler.Scheduler;
-import logic.scheduler.strategy.TimeStrategy;
 import model.Client;
 import model.Server;
 
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
-public class Simulator implements Runnable{
+public class Simulator implements Runnable {
 
     private static int currentTime;
 
@@ -21,28 +18,20 @@ public class Simulator implements Runnable{
 
     private Generator generator;
     private Scheduler scheduler;
+    private Logger logger;
 
-    public Simulator(Generator generator, Scheduler scheduler) {
-        currentTime = 0;
+
+    public Simulator(Generator generator, Scheduler scheduler, String logFilePath) {
         this.generator = generator;
         this.scheduler = scheduler;
-    }
-
-
-    private boolean hasClients() {
-        for (Server server : scheduler.getServers()) {
-            if (server.getClients().length != 0) {
-                return true;
-            }
-        }
-        return false;
+        this.logger = new Logger(logFilePath);
     }
 
     @Override
     public void run() {
         currentTime = 0;
         List<Client> clients = generator.generateRandomClients(generator.getNumberOfClients());
-        while(currentTime < generator.getMaxSimulationTime()){
+        while (currentTime < generator.getMaxSimulationTime()) {
             Iterator<Client> iterator = clients.iterator();
             while (iterator.hasNext()) {
                 Client client = iterator.next();
@@ -57,11 +46,22 @@ public class Simulator implements Runnable{
                 e.printStackTrace();
             }
 
-            System.out.println("Time " + currentTime);
-            System.out.println("Waiting clients: " + clients);
-            System.out.println("Servers: " + scheduler.getServers());
+            logger.logEvent("Time " + currentTime + "\n");
+            logger.logEvent("Waiting clients: " + clients + "\n");
+            for (int i = 0; i < scheduler.getServers().size(); i++) {
+                logger.logEvent("Queue " + (i + 1) + ": ");
+                Server server = scheduler.getServers().get(i);
+                if (server.getClients().length > 0) {
+                    logger.logEvent(Arrays.toString(server.getClients()) + " waiting time: " + server.getWaitingTime() + "\n");
+                } else {
+                    logger.logEvent("closed\n");
+                }
+            }
+            logger.logEvent("\n");
+
 
             currentTime++;
         }
+        logger.close();
     }
 }

@@ -22,6 +22,10 @@ public class Client {
         return serviceTime;
     }
 
+    public int getId() {
+        return id;
+    }
+
     public void decrementServiceTime() {
         if (serviceTime > 0) {
             serviceTime--;
