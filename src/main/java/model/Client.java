@@ -7,11 +7,14 @@ public class Client {
 
     private int serviceTime;
 
+    private int remainingServiceTime;
+
 
     public Client(int id, int arrivalTime, int serviceTime) {
         this.id = id;
         this.arrivalTime = arrivalTime;
         this.serviceTime = serviceTime;
+        this.remainingServiceTime = serviceTime;
     }
 
     public int getArrivalTime() {
@@ -22,13 +25,17 @@ public class Client {
         return serviceTime;
     }
 
+    public int getRemainingServiceTime() {
+        return remainingServiceTime;
+    }
+
     public int getId() {
         return id;
     }
 
-    public void decrementServiceTime() {
-        if (serviceTime > 0) {
-            serviceTime--;
+    public void decrementRemainingServiceTime() {
+        if (remainingServiceTime > 0) {
+            remainingServiceTime--;
         }
     }
 
@@ -38,6 +45,7 @@ public class Client {
                 "id=" + id +
                 ", arrivalTime=" + arrivalTime +
                 ", serviceTime=" + serviceTime +
+                ", remainingServiceTime=" + remainingServiceTime +
                 '}';
     }
 }

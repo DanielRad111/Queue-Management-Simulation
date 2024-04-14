@@ -20,9 +20,8 @@ public class Generator {
     private Integer minServiceTime;
     private Integer maxArrivalTime;
     private Integer maxServiceTime;
-    private int maxClientsPerServer;
 
-    public Generator(Random random, Integer numberOfClients, Integer numberOfQueues, Integer maxSimulationTime, Integer minArrivalTime, Integer maxArrivalTime, Integer minServiceTime, Integer maxServiceTime, int maxClientsPerServer) {
+    public Generator(Random random, Integer numberOfClients, Integer numberOfQueues, Integer maxSimulationTime, Integer minArrivalTime, Integer maxArrivalTime, Integer minServiceTime, Integer maxServiceTime) {
         this.random = random;
         this.numberOfClients = numberOfClients;
         this.numberOfQueues = numberOfQueues;
@@ -32,7 +31,6 @@ public class Generator {
         this.maxArrivalTime = maxArrivalTime;
         this.maxServiceTime = maxServiceTime;
         this.idCopy = 1;
-        this.maxClientsPerServer = maxClientsPerServer;
     }
 
     public Client generateRandomClient() {

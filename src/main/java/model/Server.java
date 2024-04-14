@@ -24,11 +24,11 @@ public class Server implements Runnable {
                 Client client = clients.peek();
                 if (client != null) {
                     Thread.sleep(1000);
-                    client.decrementServiceTime();
+                    client.decrementRemainingServiceTime();
                     synchronized (waitingPeriod) {
                         waitingPeriod.decrementAndGet();
                     }
-                    if (client.getServiceTime() == 0) {
+                    if (client.getRemainingServiceTime() == 0) {
                         clients.poll();
                     }
                 } else {
@@ -42,21 +42,21 @@ public class Server implements Runnable {
 
     public void addClient(Client client) {
         synchronized (waitingPeriod) {
-            if (clients.size() < maxClientsPerServer) {
-                try {
-                    clients.put(client);
-                    waitingPeriod.addAndGet(client.getServiceTime());
-                } catch (InterruptedException e) {
-                    Thread.currentThread().interrupt();
-                }
-            } else {
-                System.out.println("Server is full. Client not added.");
+            try {
+                clients.put(client);
+                waitingPeriod.addAndGet(client.getServiceTime());
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
             }
         }
     }
 
     public Client[] getClients() {
         return clients.toArray(new Client[0]);
+    }
+
+    public Client getCurrentClient() {
+        return clients.peek();
     }
 
     public int getWaitingTime() {

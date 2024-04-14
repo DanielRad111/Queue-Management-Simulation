@@ -5,15 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c24e3419-15e6-42c2-9103-392392d92605" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gui/InputForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/InputForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logic/logger/Logger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/logger/Logger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/logic/generator/Generator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/generator/Generator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/logic/logger/log" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/logger/log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/logic/scheduler/Scheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/scheduler/Scheduler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logic/scheduler/strategy/ShortestQueueStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/scheduler/strategy/ShortestQueueStrategy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/logic/simulator/Simulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/simulator/Simulator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Server.java" afterDir="false" />
     </list>
@@ -26,8 +23,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -58,8 +55,9 @@
     &quot;Application.InputForm.executor&quot;: &quot;Run&quot;,
     &quot;Application.Main.executor&quot;: &quot;Run&quot;,
     &quot;Application.QueueVisualization.executor&quot;: &quot;Run&quot;,
+    &quot;Application.SimulationFrame.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Program Files/javafx-sdk-21.0.2/lib/javafx.web.jar&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -107,6 +105,9 @@
       <workItem from="1712845887358" duration="4466000" />
       <workItem from="1712936880434" duration="2989000" />
       <workItem from="1712940560152" duration="805000" />
+      <workItem from="1713027261908" duration="1720000" />
+      <workItem from="1713082167783" duration="1583000" />
+      <workItem from="1713083929299" duration="2315000" />
     </task>
     <servers />
   </component>

@@ -14,6 +14,13 @@ import java.util.List;
 import java.util.Random;
 
 public class InputForm extends JFrame {
+    private JTextArea simulationArea;
+    private JScrollPane simulationScrollPane;
+    private JPanel resultsPanel;
+    private JPanel inputForm;
+    private JLabel averageWaitingTimeLabel;
+    private JLabel averageServiceLabel;
+    private JLabel peakHourLabel;
     private JTextField numberOfClientsField;
     private JTextField numberOfQueuesField;
     private JTextField simulationIntervalField;
@@ -21,18 +28,67 @@ public class InputForm extends JFrame {
     private JTextField maxArrivalTimeField;
     private JTextField minServiceTimeField;
     private JTextField maxServiceTimeField;
-    private JTextField maxClientsPerServerField;
     private JComboBox<SelectionPolicy> strategyComboBox;
+    private JButton startButton;
 
     public InputForm() {
-        setTitle("Queue Management Application Input");
-        setSize(400, 300);
+        setTitle("Queue Management Application Simulation");
+        setSize(800, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(10, 2));
-        panel.setBackground(new Color(47, 79, 79));
+        setLayout(new BorderLayout());
         setLocationRelativeTo(null);
+
+        simulationArea = new JTextArea();
+        simulationArea.setEditable(false);
+
+        simulationScrollPane = new JScrollPane(simulationArea);
+        simulationScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        simulationScrollPane.setBackground(new Color(47, 79, 79));
+        simulationScrollPane.setForeground(new Color(47, 79, 79));
+        add(simulationScrollPane, BorderLayout.CENTER);
+
+        inputForm = createInputPanel();
+        add(inputForm, BorderLayout.NORTH);
+
+        resultsPanel = createResultPanel();
+        add(resultsPanel, BorderLayout.SOUTH);
+
+        startButton = new JButton("Start");
+        startButton.setBackground(new Color(70, 130, 180));
+        startButton.setForeground(Color.BLACK);
+        startButton.setFocusPainted(false);
+        startButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int numberOfClients = Integer.parseInt(numberOfClientsField.getText());
+                int numberOfQueues = Integer.parseInt(numberOfQueuesField.getText());
+                int simulationInterval = Integer.parseInt(simulationIntervalField.getText());
+                int minArrivalTime = Integer.parseInt(minArrivalTimeField.getText());
+                int maxArrivalTime = Integer.parseInt(maxArrivalTimeField.getText());
+                int minServiceTime = Integer.parseInt(minServiceTimeField.getText());
+                int maxServiceTime = Integer.parseInt(maxServiceTimeField.getText());
+                SelectionPolicy strategy = (SelectionPolicy) strategyComboBox.getSelectedItem();
+
+                Generator generator = new Generator(new Random(), numberOfClients, numberOfQueues, simulationInterval, minArrivalTime, maxArrivalTime, minServiceTime, maxServiceTime);
+                Scheduler scheduler = new Scheduler(numberOfQueues);
+                scheduler.serversInitializer();
+                scheduler.changeStrategy(strategy);
+
+                Simulator simulator = new Simulator(generator, scheduler, "/Users/danielrad/Desktop/QZ/Coding/TP/Assignment2/src/main/java/logic/logger/log");
+                Thread t = new Thread(simulator);
+                t.start();
+            }
+        });
+        inputForm.add(new JLabel());
+        inputForm.add(startButton);
+
+        setVisible(true);
+    }
+
+    private JPanel createInputPanel() {
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(9, 2));
+        panel.setBackground(new Color(47, 79, 79));
 
         panel.add(createLabel("Number of Clients (N):"));
         numberOfClientsField = new JTextField();
@@ -88,53 +144,30 @@ public class InputForm extends JFrame {
         maxServiceTimeField.setFont(new Font("Arial", Font.PLAIN, 14));
         panel.add(maxServiceTimeField);
 
-
-        panel.add(createLabel("Maximum Clients Per Server:"));
-        maxClientsPerServerField = new JTextField();
-        maxClientsPerServerField.setBackground(new Color(192, 192, 192));
-        maxClientsPerServerField.setForeground(Color.BLACK);
-        maxClientsPerServerField.setFont(new Font("Arial", Font.PLAIN, 14));
-        panel.add(maxClientsPerServerField);
-
-
         panel.add(createLabel("Strategy:"));
         strategyComboBox = new JComboBox<>(SelectionPolicy.values());
-        strategyComboBox.setBackground(new Color(105, 105, 105));
-        strategyComboBox.setForeground(Color.WHITE);
+        strategyComboBox.setBackground(new Color(192, 192, 192));
+        strategyComboBox.setForeground(Color.BLACK);
         panel.add(strategyComboBox);
 
-        JButton submitButton = new JButton("Submit");
-        submitButton.setBackground(new Color(70, 130, 180));
-        submitButton.setForeground(Color.WHITE);
-        submitButton.setFocusPainted(false);
-        submitButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                int numberOfClients = Integer.parseInt(numberOfClientsField.getText());
-                int numberOfQueues = Integer.parseInt(numberOfQueuesField.getText());
-                int simulationInterval = Integer.parseInt(simulationIntervalField.getText());
-                int minArrivalTime = Integer.parseInt(minArrivalTimeField.getText());
-                int maxArrivalTime = Integer.parseInt(maxArrivalTimeField.getText());
-                int minServiceTime = Integer.parseInt(minServiceTimeField.getText());
-                int maxServiceTime = Integer.parseInt(maxServiceTimeField.getText());
-                int maxClientsPerServer = Integer.parseInt(maxClientsPerServerField.getText());
-                SelectionPolicy strategy = (SelectionPolicy) strategyComboBox.getSelectedItem();
+        return panel;
+    }
 
-                Generator generator = new Generator(new Random(), numberOfClients, numberOfQueues, simulationInterval, minArrivalTime, maxArrivalTime, minServiceTime, maxServiceTime, maxClientsPerServer);
-                Scheduler scheduler = new Scheduler(numberOfQueues, maxClientsPerServer);
-                scheduler.serversInitializer();
-                scheduler.changeStrategy(strategy);
-                
-                Simulator simulator = new Simulator(generator, scheduler, "D:\\CODING\\Proiecte InteliJ\\TP\\Assignment2\\src\\main\\java\\logic\\logger\\log");
-                simulator.run();
-            }
-        });
-
+    private JPanel createResultPanel() {
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(3, 2));
+        panel.setBackground(new Color(47, 79, 79));
+        averageWaitingTimeLabel = createLabel("Average Waiting Time:");
+        averageServiceLabel = createLabel("Average Service Time:");
+        peakHourLabel = createLabel("Peak Hour:");
+        panel.add(averageWaitingTimeLabel);
         panel.add(new JLabel());
-        panel.add(submitButton);
+        panel.add(averageServiceLabel);
+        panel.add(new JLabel());
+        panel.add(peakHourLabel);
+        panel.add(new JLabel());
 
-        add(panel);
-        setVisible(true);
+        return panel;
     }
 
     private JLabel createLabel(String text) {
@@ -144,8 +177,48 @@ public class InputForm extends JFrame {
         return label;
     }
 
+    public void appendLog(String text) {
+        simulationArea.append(text + "\n");
+        simulationArea.setCaretPosition(simulationArea.getDocument().getLength());
+    }
 
-    public static void main(String[] args) {
-        new InputForm();
+    public void setAvgWaitingTime(double avgWaitingTime) {
+        averageWaitingTimeLabel.setText("Average waiting time: " + avgWaitingTime);
+    }
+
+    public void setAvgServiceTime(double avgServiceTime) {
+        averageServiceLabel.setText("Average service time: " + avgServiceTime);
+    }
+
+    public void setPeakHour(int peakHour) {
+        peakHourLabel.setText("Peak hour: " + peakHour);
+    }
+
+    public int getNumberOfClients() {
+        return Integer.parseInt(numberOfClientsField.getText());
+    }
+
+    public int getNumberOfServers() {
+        return Integer.parseInt(numberOfQueuesField.getText());
+    }
+
+    public int getTimeLimit() {
+        return Integer.parseInt(maxServiceTimeField.getText());
+    }
+
+    public int getMinArrivalTime() {
+        return Integer.parseInt(minArrivalTimeField.getText());
+    }
+
+    public int getMaxArrivalTime() {
+        return Integer.parseInt(maxArrivalTimeField.getText());
+    }
+
+    public int getMinServiceTime() {
+        return Integer.parseInt(minServiceTimeField.getText());
+    }
+
+    public int getMaxServiceTime() {
+        return Integer.parseInt(maxServiceTimeField.getText());
     }
 }

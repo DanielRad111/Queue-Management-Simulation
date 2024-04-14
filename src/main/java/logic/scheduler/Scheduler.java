@@ -13,19 +13,17 @@ import java.util.List;
 public class Scheduler {
     private List<Server> servers;
     private int maxNoServers;
-    private int maxClientsPerServer;
     private Strategy strategy;
 
-    public Scheduler(int maxNoServers, int maxClientsPerServer) {
+    public Scheduler(int maxNoServers) {
         this.maxNoServers = maxNoServers;
-        this.maxClientsPerServer = maxClientsPerServer;
-        this.strategy = new ShortestQueueStrategy();//default strategy
+        this.strategy = new TimeStrategy();//default strategy
     }
 
     public void serversInitializer() {
         this.servers = new ArrayList<>();
         for (int i = 0; i < maxNoServers; i++) {
-            Server server = new Server(maxClientsPerServer);
+            Server server = new Server(maxNoServers);
             servers.add(server);
             Thread thread = new Thread(server);
             thread.start();
