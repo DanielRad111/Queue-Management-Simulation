@@ -6,16 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="c24e3419-15e6-42c2-9103-392392d92605" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gui/InputForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/InputForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logic/generator/Generator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/generator/Generator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logic/logger/log" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/logger/log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logic/scheduler/Scheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/scheduler/Scheduler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logic/scheduler/strategy/ShortestQueueStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/scheduler/strategy/ShortestQueueStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logic/scheduler/strategy/TimeStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/scheduler/strategy/TimeStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/ProgressBars.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/ProgressBars.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/logic/simulator/Simulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/simulator/Simulator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Server.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,34 +46,36 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.DisplayGraphics.executor&quot;: &quot;Run&quot;,
-    &quot;Application.EnhancedInputForm.executor&quot;: &quot;Run&quot;,
-    &quot;Application.HelloApplication.executor&quot;: &quot;Debug&quot;,
-    &quot;Application.InputForm.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.QueueVisualization.executor&quot;: &quot;Run&quot;,
-    &quot;Application.SimulationFrame.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Simulator.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/CODING/Proiecte InteliJ/TP/pt2024_30223_daniel_rad_assignment_2&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.stylelint&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.1908046&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.DisplayGraphics.executor": "Run",
+    "Application.EnhancedInputForm.executor": "Run",
+    "Application.HelloApplication.executor": "Debug",
+    "Application.InputForm.executor": "Run",
+    "Application.Main.executor": "Run",
+    "Application.ProgressBars.executor": "Run",
+    "Application.QueueVisualization.executor": "Run",
+    "Application.SimulationFrame.executor": "Run",
+    "Application.SimulationManager.executor": "Run",
+    "Application.Simulator.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/CODING/Proiecte InteliJ/TP/pt2024_30223_daniel_rad_assignment_2",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.stylelint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.stylelint": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.1908046",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="pt2024_30223_daniel_rad_assignment_2" />
@@ -149,6 +144,16 @@
           <properties class="java.lang.NullPointerException" package="java.lang" />
           <option name="timeStamp" value="1" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/logic/simulator/Simulator.java</url>
+          <line>169</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/logic/simulator/Simulator.java</url>
+          <line>174</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

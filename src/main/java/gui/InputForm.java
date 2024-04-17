@@ -140,29 +140,29 @@ public class InputForm extends JFrame {
         startButton.setBackground(new Color(70, 130, 180));
         startButton.setForeground(Color.BLACK);
         startButton.setFocusPainted(false);
-        startButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                int numberOfClients = Integer.parseInt(numberOfClientsField.getText());
-                int numberOfQueues = Integer.parseInt(numberOfQueuesField.getText());
-                int simulationInterval = Integer.parseInt(simulationIntervalField.getText());
-                int minArrivalTime = Integer.parseInt(minArrivalTimeField.getText());
-                int maxArrivalTime = Integer.parseInt(maxArrivalTimeField.getText());
-                int minServiceTime = Integer.parseInt(minServiceTimeField.getText());
-                int maxServiceTime = Integer.parseInt(maxServiceTimeField.getText());
-                int maxClientsPerServer = Integer.parseInt(maxClientsField.getText());
-                SelectionPolicy strategy = (SelectionPolicy) strategyComboBox.getSelectedItem();
-
-                Generator generator = new Generator(new Random(), numberOfClients, numberOfQueues, simulationInterval, minArrivalTime, maxArrivalTime, minServiceTime, maxServiceTime);
-                Scheduler scheduler = new Scheduler(numberOfQueues, maxClientsPerServer);
-                scheduler.serversInitializer();
-                scheduler.changeStrategy(strategy);
-
-                Simulator simulator = new Simulator(generator, scheduler, "D:\\CODING\\Proiecte InteliJ\\TP\\pt2024_30223_daniel_rad_assignment_2\\src\\main\\java\\logic\\logger\\log", new InputForm());
-                Thread thread = new Thread(simulator);
-                thread.start();
-            }
-        });
+//        startButton.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                int numberOfClients = getNumberOfClients();
+//                int numberOfQueues = getNumberOfServers();
+//                int simulationInterval = getTimeLimit();
+//                int minArrivalTime = getMinArrivalTime();
+//                int maxArrivalTime = getMaxArrivalTime();
+//                int minServiceTime = getMinServiceTime();
+//                int maxServiceTime = getMaxServiceTime();
+//                int maxClientsPerServer = getMaxClientsPerServer();
+//                SelectionPolicy strategy = getSelectionPolicy();
+//
+//                Generator generator = new Generator(new Random(), numberOfClients, numberOfQueues, simulationInterval, minArrivalTime, maxArrivalTime, minServiceTime, maxServiceTime);
+//                Scheduler scheduler = new Scheduler(numberOfQueues, maxClientsPerServer);
+//                scheduler.serversInitializer();
+//                scheduler.changeStrategy(strategy);
+//
+//                Simulator simulator = new Simulator(new InputForm());
+//                Thread thread = new Thread(simulator);
+//                thread.start();
+//            }
+//        });
         inputForm.add(new JLabel());
         inputForm.add(startButton);
 
@@ -202,7 +202,7 @@ public class InputForm extends JFrame {
     }
 
     public int getTimeLimit() {
-        return Integer.parseInt(maxServiceTimeField.getText());
+        return Integer.parseInt(simulationIntervalField.getText());
     }
 
     public int getMinArrivalTime() {
@@ -225,7 +225,11 @@ public class InputForm extends JFrame {
         return Integer.parseInt(maxClientsField.getText());
     }
 
-    public SelectionPolicy getStrategy() {
+    public SelectionPolicy getSelectionPolicy() {
         return (SelectionPolicy) strategyComboBox.getSelectedItem();
+    }
+
+    public void setStartButtonActionListener(ActionListener listener) {
+        startButton.addActionListener(listener);
     }
 }
