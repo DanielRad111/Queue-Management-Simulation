@@ -1,45 +1,54 @@
 package logic.simulator;
 
 import gui.InputForm;
+import gui.ProgressBars;
 import logic.generator.Generator;
 import logic.logger.Logger;
 import logic.scheduler.Scheduler;
+import logic.scheduler.strategy.SelectionPolicy;
 import model.Client;
 import model.Server;
 
+import javax.swing.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class Simulator implements Runnable {
-
     private static int currentTime;
     private static int totalServiceTime;
     private static int totalWaitingTime;
+    private JProgressBar[] progressBars;
 
     public static int getCurrentTime() {
         return currentTime;
     }
 
-    private Generator generator;
-    private Scheduler scheduler;
-    private Logger logger;
-    private InputForm inputForm;
+    private final Generator generator;
+    private final Scheduler scheduler;
+    private final Logger logger;
+    private final InputForm inputForm;
 
 
-    public Simulator(Generator generator, Scheduler scheduler, String logFilePath) {
+    public Simulator(Generator generator, Scheduler scheduler, String logFilePath, InputForm form) {
         this.generator = generator;
         this.scheduler = scheduler;
         this.logger = new Logger(logFilePath);
-        inputForm = new InputForm();
+        this.inputForm = form;
+        progressBars = new JProgressBar[generator.getNumberOfQueues()];
+        for (int i = 0; i < generator.getNumberOfQueues(); i++) {
+            progressBars[i] = new JProgressBar();
+            progressBars[i].setStringPainted(true);
+        }
+        ProgressBars progressBar = new ProgressBars(progressBars);
     }
 
     @Override
     public void run() {
-        currentTime = 0;
+        currentTime = 1;
         totalWaitingTime = 0;
         int maxClientsInQueue = 0;
         totalServiceTime = 0;
-        int peakHour = 0;
+        int peakHour = 1;
         List<Client> clients = generator.generateRandomClients(generator.getNumberOfClients());
         clients = clients.stream()
                 .sorted(Comparator.comparingInt(Client::getArrivalTime))
@@ -47,7 +56,7 @@ public class Simulator implements Runnable {
         for (Client client : clients) {
             totalServiceTime += client.getServiceTime();
         }
-        while (currentTime < generator.getMaxSimulationTime()) {
+        while (currentTime <= generator.getMaxSimulationTime()) {
             Iterator<Client> iterator = clients.iterator();
             while (iterator.hasNext()) {
                 Client client = iterator.next();
@@ -57,7 +66,7 @@ public class Simulator implements Runnable {
                 }
             }
             try {
-                Thread.sleep(1000);
+                Thread.sleep(1000L);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -89,6 +98,15 @@ public class Simulator implements Runnable {
                 } else {
                     inputForm.appendLog("closed\n");
                 }
+
+                for (int j = 0; j < generator.getNumberOfQueues(); j++) {
+                    if (scheduler.getServers().get(j).getClients().length == 0) {
+                        progressBars[j].setValue(0);
+                    } else {
+                        progressBars[j].setValue((int) ((double) scheduler.getServers().get(j).getClients().length / scheduler.getMaxClientsPerServer() * 100));
+                    }
+                }
+
             }
             logger.logEvent("\n");
             if (serversEmpty && clients.isEmpty()) {
@@ -112,5 +130,9 @@ public class Simulator implements Runnable {
         logger.logEvent("Maximum clients in queues: " + maxClientsInQueue + "\n");
 
         logger.close();
+    }
+
+    public static void main(String[] args) {
+        InputForm form = new InputForm();
     }
 }

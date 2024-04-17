@@ -33,6 +33,9 @@ public class Generator {
         this.idCopy = 1;
     }
 
+    public Generator() {
+    }
+
     public Client generateRandomClient() {
         int id = idCopy++;
         int arrivalTime = random.nextInt(maxArrivalTime - minArrivalTime) + minArrivalTime;
@@ -75,5 +78,33 @@ public class Generator {
 
     public Integer getMaxServiceTime() {
         return maxServiceTime;
+    }
+
+    public void setNumberOfClients(Integer numberOfClients) {
+        this.numberOfClients = numberOfClients;
+    }
+
+    public void setNumberOfQueues(Integer numberOfQueues) {
+        this.numberOfQueues = numberOfQueues;
+    }
+
+    public void setMaxSimulationTime(Integer maxSimulationTime) {
+        this.maxSimulationTime = maxSimulationTime;
+    }
+
+    public void setMinArrivalTime(Integer minArrivalTime) {
+        this.minArrivalTime = minArrivalTime;
+    }
+
+    public void setMinServiceTime(Integer minServiceTime) {
+        this.minServiceTime = minServiceTime;
+    }
+
+    public void setMaxArrivalTime(Integer maxArrivalTime) {
+        this.maxArrivalTime = maxArrivalTime;
+    }
+
+    public void setMaxServiceTime(Integer maxServiceTime) {
+        this.maxServiceTime = maxServiceTime;
     }
 }

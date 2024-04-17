@@ -6,10 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="c24e3419-15e6-42c2-9103-392392d92605" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gui/InputForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/InputForm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/logic/generator/Generator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/generator/Generator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/logic/logger/log" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/logger/log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/logic/scheduler/Scheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/scheduler/Scheduler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/logic/scheduler/strategy/ShortestQueueStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/scheduler/strategy/ShortestQueueStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/logic/scheduler/strategy/TimeStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/scheduler/strategy/TimeStrategy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/logic/simulator/Simulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/simulator/Simulator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Server.java" afterDir="false" />
@@ -24,6 +27,8 @@
       <list>
         <option value="Enum" />
         <option value="Interface" />
+        <option value="FxmlFile" />
+        <option value="module-info" />
         <option value="Class" />
       </list>
     </option>
@@ -52,14 +57,16 @@
   &quot;keyToString&quot;: {
     &quot;Application.DisplayGraphics.executor&quot;: &quot;Run&quot;,
     &quot;Application.EnhancedInputForm.executor&quot;: &quot;Run&quot;,
+    &quot;Application.HelloApplication.executor&quot;: &quot;Debug&quot;,
     &quot;Application.InputForm.executor&quot;: &quot;Run&quot;,
     &quot;Application.Main.executor&quot;: &quot;Run&quot;,
     &quot;Application.QueueVisualization.executor&quot;: &quot;Run&quot;,
     &quot;Application.SimulationFrame.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Simulator.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Program Files/javafx-sdk-21.0.2/lib/javafx.web.jar&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/CODING/Proiecte InteliJ/TP/pt2024_30223_daniel_rad_assignment_2&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -74,6 +81,21 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="pt2024_30223_daniel_rad_assignment_2" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="pt2024_30223_daniel_rad_assignment_2" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -108,6 +130,12 @@
       <workItem from="1713027261908" duration="1720000" />
       <workItem from="1713082167783" duration="1583000" />
       <workItem from="1713083929299" duration="2315000" />
+      <workItem from="1713106076062" duration="970000" />
+      <workItem from="1713191092595" duration="25000" />
+      <workItem from="1713191851517" duration="9701000" />
+      <workItem from="1713249189865" duration="1233000" />
+      <workItem from="1713290180529" duration="2566000" />
+      <workItem from="1713296754095" duration="1736000" />
     </task>
     <servers />
   </component>

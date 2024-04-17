@@ -13,10 +13,16 @@ import java.util.List;
 public class Scheduler {
     private List<Server> servers;
     private int maxNoServers;
+    private int maxClientsPerServer;
     private Strategy strategy;
 
-    public Scheduler(int maxNoServers) {
+    public Scheduler(int maxNoServers, int maxClientsPerServer) {
+        if (maxNoServers < 1 || maxClientsPerServer < 1) {
+            System.err.println("The scheduler can't have a negative number of servers or clients!");
+            return;
+        }
         this.maxNoServers = maxNoServers;
+        this.maxClientsPerServer = maxClientsPerServer;
         this.strategy = new TimeStrategy();//default strategy
     }
 
@@ -39,11 +45,26 @@ public class Scheduler {
         }
     }
 
-    public void dispatchClient(Client client) {
-        strategy.addClient(servers, client);
+    synchronized public void dispatchClient(Client client) {
+        List<Server> availableServers = new ArrayList<>();
+
+        try {
+            servers.forEach((currentServer) -> {
+                if (currentServer.getClients().length < this.maxClientsPerServer) {
+                    availableServers.add(currentServer);
+                }
+            });
+            strategy.addClient(availableServers, client);
+        } catch (ClassCastException exception) {
+            System.err.println(exception.getMessage());
+        }
     }
 
     public List<Server> getServers() {
         return servers;
+    }
+
+    public int getMaxClientsPerServer() {
+        return maxClientsPerServer;
     }
 }

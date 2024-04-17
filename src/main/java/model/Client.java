@@ -41,11 +41,6 @@ public class Client {
 
     @Override
     public String toString() {
-        return "Client{" +
-                "id=" + id +
-                ", arrivalTime=" + arrivalTime +
-                ", serviceTime=" + serviceTime +
-                ", remainingServiceTime=" + remainingServiceTime +
-                '}';
+        return "Client ID: " + this.id + " | arrivalTime= " + this.arrivalTime + " | serviceTime= " + this.remainingServiceTime;
     }
 }

@@ -17,6 +17,25 @@ public class Server implements Runnable {
         this.maxClientsPerServer = maxClientsPerServer;
     }
 
+    public void addClient(Client client) {
+        synchronized (waitingPeriod) {
+            try {
+                clients.put(client);
+                waitingPeriod.addAndGet(client.getServiceTime());
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+        }
+    }
+
+    public Client[] getClients() {
+        return clients.toArray(new Client[0]);
+    }
+
+    public int getWaitingTime() {
+        return waitingPeriod.get();
+    }
+
     @Override
     public void run() {
         while (true) {
@@ -38,29 +57,6 @@ public class Server implements Runnable {
                 e.printStackTrace();
             }
         }
-    }
-
-    public void addClient(Client client) {
-        synchronized (waitingPeriod) {
-            try {
-                clients.put(client);
-                waitingPeriod.addAndGet(client.getServiceTime());
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-            }
-        }
-    }
-
-    public Client[] getClients() {
-        return clients.toArray(new Client[0]);
-    }
-
-    public Client getCurrentClient() {
-        return clients.peek();
-    }
-
-    public int getWaitingTime() {
-        return waitingPeriod.get();
     }
 
     @Override

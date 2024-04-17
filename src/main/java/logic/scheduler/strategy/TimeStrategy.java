@@ -8,14 +8,14 @@ import java.util.List;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-public class TimeStrategy implements Strategy{
+public class TimeStrategy implements Strategy {
 
     @Override
-    public void addClient(List<Server> servers, Client client) {
-        Server server  = servers.getFirst();
+    synchronized public void addClient(List<Server> servers, Client client) {
+        Server server = servers.getFirst();
         int index = servers.indexOf(server);
         for (Server s : servers) {
-            if(s.getWaitingTime() < server.getWaitingTime()) {
+            if (s.getWaitingTime() < server.getWaitingTime()) {
                 server = s;
                 index = servers.indexOf(s);
             }

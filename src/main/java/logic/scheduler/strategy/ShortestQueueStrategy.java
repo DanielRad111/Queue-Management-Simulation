@@ -8,7 +8,7 @@ import java.util.List;
 public class ShortestQueueStrategy implements Strategy {
 
     @Override
-    public void addClient(List<Server> servers, Client client) {
+    synchronized public void addClient(List<Server> servers, Client client) {
         Server server = servers.getFirst();
         int index = servers.indexOf(server);
         for (Server s : servers) {
