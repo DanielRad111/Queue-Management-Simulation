@@ -33,9 +33,6 @@ public class Generator {
         this.idCopy = 1;
     }
 
-    public Generator() {
-    }
-
     public Client generateRandomClient() {
         int id = idCopy++;
         int arrivalTime = random.nextInt(maxArrivalTime - minArrivalTime) + minArrivalTime;
