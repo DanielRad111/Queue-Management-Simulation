@@ -17,13 +17,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Simulator implements Runnable {
-    public int numberOfClients;
-    public int numberOfServers;
-    public int simulationTime;
-    public int minArrivalTime;
-    public int maxArrivalTime;
-    public int minServiceTime;
-    public int maxServiceTime;
+    private int numberOfClients;
+    private int numberOfServers;
+    private int simulationTime;
+    private int minArrivalTime;
+    private int maxArrivalTime;
+    private int minServiceTime;
+    private int maxServiceTime;
     private int maxClientsPerServer;
 
     public static int currentTime;
@@ -68,7 +68,7 @@ public class Simulator implements Runnable {
         currentTime = 1;
         totalWaitingTime = 0;
         totalServiceTime = 0;
-        
+
         generatedClients = generator.generateRandomClients(numberOfClients);
         generatedClients = generatedClients.stream()
                 .sorted(Comparator.comparingInt(Client::getArrivalTime))

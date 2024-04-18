@@ -6,12 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="c24e3419-15e6-42c2-9103-392392d92605" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Documentatie Assignment 2.docx" beforeDir="false" afterPath="$PROJECT_DIR$/Documentatie Assignment 2.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/InputForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/InputForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/ProgressBars.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/ProgressBars.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logic/generator/Generator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/generator/Generator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/logic/logger/log" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/logger/log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logic/scheduler/Scheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/scheduler/Scheduler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/logic/simulator/Simulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/simulator/Simulator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -136,7 +131,7 @@
       <workItem from="1713290180529" duration="2566000" />
       <workItem from="1713296754095" duration="1736000" />
       <workItem from="1713445109007" duration="1591000" />
-      <workItem from="1713452749240" duration="2863000" />
+      <workItem from="1713452749240" duration="3605000" />
     </task>
     <servers />
   </component>
