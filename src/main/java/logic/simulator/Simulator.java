@@ -25,7 +25,6 @@ public class Simulator implements Runnable {
     public int minServiceTime;
     public int maxServiceTime;
     private int maxClientsPerServer;
-    private String logFilePath = "D:\\CODING\\Proiecte InteliJ\\TP\\pt2024_30223_daniel_rad_assignment_2\\src\\main\\java\\logic\\logger\\log";
 
     public static int currentTime;
     private static int totalServiceTime;
@@ -40,7 +39,7 @@ public class Simulator implements Runnable {
     private final InputForm inputForm;
 
 
-    public Simulator(InputForm form) {
+    public Simulator(InputForm form, String logFilePath) {
         this.inputForm = form;
         this.numberOfClients = form.getNumberOfClients();
         this.numberOfServers = form.getNumberOfServers();
@@ -54,7 +53,7 @@ public class Simulator implements Runnable {
         this.scheduler = new Scheduler(numberOfServers, maxClientsPerServer);
         scheduler.changeStrategy(form.getSelectionPolicy());
         scheduler.serversInitializer();
-        this.logger = new Logger(this.logFilePath);
+        this.logger = new Logger(logFilePath);
         progressBars = new JProgressBar[numberOfServers];
         for (int i = 0; i < numberOfServers; i++) {
             progressBars[i] = new JProgressBar();
@@ -69,11 +68,7 @@ public class Simulator implements Runnable {
         currentTime = 1;
         totalWaitingTime = 0;
         totalServiceTime = 0;
-
-        int maxClientsInQueue = 0;
-        int peakHour = 1;
-
-
+        
         generatedClients = generator.generateRandomClients(numberOfClients);
         generatedClients = generatedClients.stream()
                 .sorted(Comparator.comparingInt(Client::getArrivalTime))
@@ -82,12 +77,11 @@ public class Simulator implements Runnable {
             totalServiceTime += client.getServiceTime();
         }
 
+        int maxClientsInQueue = 0;
+        int peakHour = 1;
+
 
         while (currentTime <= simulationTime) {
-            inputForm.appendLog("Time " + currentTime);
-            inputForm.appendLog("Waiting clients: " + generatedClients + "\n");
-            logger.logEvent("Time " + currentTime + "\n");
-            logger.logEvent("Waiting clients: " + generatedClients + "\n");
 
             Iterator<Client> iterator = generatedClients.iterator();
             while (iterator.hasNext()) {
@@ -102,6 +96,11 @@ public class Simulator implements Runnable {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+
+            inputForm.appendLog("Time " + currentTime);
+            inputForm.appendLog("Waiting clients: " + generatedClients + "\n");
+            logger.logEvent("Time " + currentTime + "\n");
+            logger.logEvent("Waiting clients: " + generatedClients + "\n");
 
             boolean serversEmpty = true;
             for (int i = 0; i < scheduler.getServers().size(); i++) {
@@ -149,8 +148,8 @@ public class Simulator implements Runnable {
             currentTime++;
         }
 
-        double averageWaitingTime = (double) totalWaitingTime / generator.getNumberOfClients();
-        double averageServiceTime = (double) totalServiceTime / generator.getNumberOfClients();
+        double averageWaitingTime = (double) totalWaitingTime / numberOfClients;
+        double averageServiceTime = (double) totalServiceTime / numberOfClients;
 
         inputForm.setAvgServiceTime(averageServiceTime);
         inputForm.setAvgWaitingTime(averageWaitingTime);
@@ -167,12 +166,11 @@ public class Simulator implements Runnable {
     }
 
     public static void main(String[] args) {
-        //
         InputForm form = new InputForm();
         form.setStartButtonActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Simulator simManager = new Simulator(form);
+                Simulator simManager = new Simulator(form, "/Users/danielrad/Desktop/QZ/Coding/TP/Assignment2/src/main/java/logic/logger/log");
                 Thread t = new Thread(simManager);
                 t.start();
             }

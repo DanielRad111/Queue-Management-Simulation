@@ -47,7 +47,6 @@ public class Scheduler {
 
     synchronized public void dispatchClient(Client client) {
         List<Server> availableServers = new ArrayList<>();
-
         try {
             servers.forEach((currentServer) -> {
                 if (currentServer.getClients().length < this.maxClientsPerServer) {
@@ -62,9 +61,5 @@ public class Scheduler {
 
     public List<Server> getServers() {
         return servers;
-    }
-
-    public int getMaxClientsPerServer() {
-        return maxClientsPerServer;
     }
 }

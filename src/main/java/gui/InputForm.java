@@ -140,29 +140,6 @@ public class InputForm extends JFrame {
         startButton.setBackground(new Color(70, 130, 180));
         startButton.setForeground(Color.BLACK);
         startButton.setFocusPainted(false);
-//        startButton.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                int numberOfClients = getNumberOfClients();
-//                int numberOfQueues = getNumberOfServers();
-//                int simulationInterval = getTimeLimit();
-//                int minArrivalTime = getMinArrivalTime();
-//                int maxArrivalTime = getMaxArrivalTime();
-//                int minServiceTime = getMinServiceTime();
-//                int maxServiceTime = getMaxServiceTime();
-//                int maxClientsPerServer = getMaxClientsPerServer();
-//                SelectionPolicy strategy = getSelectionPolicy();
-//
-//                Generator generator = new Generator(new Random(), numberOfClients, numberOfQueues, simulationInterval, minArrivalTime, maxArrivalTime, minServiceTime, maxServiceTime);
-//                Scheduler scheduler = new Scheduler(numberOfQueues, maxClientsPerServer);
-//                scheduler.serversInitializer();
-//                scheduler.changeStrategy(strategy);
-//
-//                Simulator simulator = new Simulator(new InputForm());
-//                Thread thread = new Thread(simulator);
-//                thread.start();
-//            }
-//        });
         inputForm.add(new JLabel());
         inputForm.add(startButton);
 
