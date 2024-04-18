@@ -1,6 +1,6 @@
 Time 1
 
-Waiting clients: [Client ID: 5 | arrivalTime= 2 | serviceTime= 2, Client ID: 6 | arrivalTime= 2 | serviceTime= 3, Client ID: 4 | arrivalTime= 4 | serviceTime= 3, Client ID: 7 | arrivalTime= 4 | serviceTime= 2, Client ID: 1 | arrivalTime= 5 | serviceTime= 2, Client ID: 3 | arrivalTime= 8 | serviceTime= 3, Client ID: 2 | arrivalTime= 9 | serviceTime= 2]
+Waiting clients: [Client ID: 2 | arrivalTime= 2 | serviceTime= 3, Client ID: 3 | arrivalTime= 2 | serviceTime= 3, Client ID: 4 | arrivalTime= 6 | serviceTime= 3, Client ID: 1 | arrivalTime= 7 | serviceTime= 3]
 
 Queue 1: 
 closed
@@ -12,85 +12,121 @@ closed
 
 Time 2
 
-Waiting clients: [Client ID: 4 | arrivalTime= 4 | serviceTime= 3, Client ID: 7 | arrivalTime= 4 | serviceTime= 2, Client ID: 1 | arrivalTime= 5 | serviceTime= 2, Client ID: 3 | arrivalTime= 8 | serviceTime= 3, Client ID: 2 | arrivalTime= 9 | serviceTime= 2]
+Waiting clients: [Client ID: 2 | arrivalTime= 2 | serviceTime= 3, Client ID: 3 | arrivalTime= 2 | serviceTime= 3, Client ID: 4 | arrivalTime= 6 | serviceTime= 3, Client ID: 1 | arrivalTime= 7 | serviceTime= 3]
 
 Queue 1: 
-[Client ID: 5 | arrivalTime= 2 | serviceTime= 2] waiting time: 2
+[Client ID: 2 | arrivalTime= 2 | serviceTime= 3] waiting time: 3
 
 Queue 2: 
-[Client ID: 6 | arrivalTime= 2 | serviceTime= 3] waiting time: 3
+[Client ID: 3 | arrivalTime= 2 | serviceTime= 3] waiting time: 3
 
 
 
 Time 3
 
-Waiting clients: [Client ID: 4 | arrivalTime= 4 | serviceTime= 3, Client ID: 7 | arrivalTime= 4 | serviceTime= 2, Client ID: 1 | arrivalTime= 5 | serviceTime= 2, Client ID: 3 | arrivalTime= 8 | serviceTime= 3, Client ID: 2 | arrivalTime= 9 | serviceTime= 2]
+Waiting clients: [Client ID: 4 | arrivalTime= 6 | serviceTime= 3, Client ID: 1 | arrivalTime= 7 | serviceTime= 3]
 
 Queue 1: 
-[Client ID: 5 | arrivalTime= 2 | serviceTime= 1] waiting time: 1
+[Client ID: 2 | arrivalTime= 2 | serviceTime= 2] waiting time: 2
 
 Queue 2: 
-[Client ID: 6 | arrivalTime= 2 | serviceTime= 2] waiting time: 2
+[Client ID: 3 | arrivalTime= 2 | serviceTime= 2] waiting time: 2
 
 
 
 Time 4
 
-Waiting clients: [Client ID: 1 | arrivalTime= 5 | serviceTime= 2, Client ID: 3 | arrivalTime= 8 | serviceTime= 3, Client ID: 2 | arrivalTime= 9 | serviceTime= 2]
+Waiting clients: [Client ID: 4 | arrivalTime= 6 | serviceTime= 3, Client ID: 1 | arrivalTime= 7 | serviceTime= 3]
 
 Queue 1: 
-[Client ID: 4 | arrivalTime= 4 | serviceTime= 3] waiting time: 3
+[Client ID: 2 | arrivalTime= 2 | serviceTime= 1] waiting time: 1
 
 Queue 2: 
-[Client ID: 6 | arrivalTime= 2 | serviceTime= 1, Client ID: 7 | arrivalTime= 4 | serviceTime= 2] waiting time: 3
+[Client ID: 3 | arrivalTime= 2 | serviceTime= 1] waiting time: 1
 
 
 
 Time 5
 
-Waiting clients: [Client ID: 3 | arrivalTime= 8 | serviceTime= 3, Client ID: 2 | arrivalTime= 9 | serviceTime= 2]
+Waiting clients: [Client ID: 4 | arrivalTime= 6 | serviceTime= 3, Client ID: 1 | arrivalTime= 7 | serviceTime= 3]
 
 Queue 1: 
-[Client ID: 4 | arrivalTime= 4 | serviceTime= 2, Client ID: 1 | arrivalTime= 5 | serviceTime= 2] waiting time: 4
-
-Queue 2: 
-[Client ID: 7 | arrivalTime= 4 | serviceTime= 2] waiting time: 2
-
-
-
-Time 6
-
-Waiting clients: [Client ID: 3 | arrivalTime= 8 | serviceTime= 3, Client ID: 2 | arrivalTime= 9 | serviceTime= 2]
-
-Queue 1: 
-[Client ID: 4 | arrivalTime= 4 | serviceTime= 1, Client ID: 1 | arrivalTime= 5 | serviceTime= 2] waiting time: 3
-
-Queue 2: 
-[Client ID: 7 | arrivalTime= 4 | serviceTime= 1] waiting time: 1
-
-
-
-Time 7
-
-Waiting clients: [Client ID: 3 | arrivalTime= 8 | serviceTime= 3, Client ID: 2 | arrivalTime= 9 | serviceTime= 2]
-
-Queue 1: 
-[Client ID: 1 | arrivalTime= 5 | serviceTime= 2] waiting time: 2
+closed
 
 Queue 2: 
 closed
 
 
 
-Time 8
+Time 6
 
-Waiting clients: [Client ID: 2 | arrivalTime= 9 | serviceTime= 2]
+Waiting clients: [Client ID: 4 | arrivalTime= 6 | serviceTime= 3, Client ID: 1 | arrivalTime= 7 | serviceTime= 3]
 
 Queue 1: 
-[Client ID: 1 | arrivalTime= 5 | serviceTime= 1] waiting time: 1
+[Client ID: 4 | arrivalTime= 6 | serviceTime= 3] waiting time: 3
 
 Queue 2: 
-[Client ID: 3 | arrivalTime= 8 | serviceTime= 3] waiting time: 3
+closed
 
 
+
+Time 7
+
+Waiting clients: [Client ID: 1 | arrivalTime= 7 | serviceTime= 3]
+
+Queue 1: 
+[Client ID: 4 | arrivalTime= 6 | serviceTime= 2] waiting time: 2
+
+Queue 2: 
+[Client ID: 1 | arrivalTime= 7 | serviceTime= 3] waiting time: 3
+
+
+
+Time 8
+
+Waiting clients: []
+
+Queue 1: 
+[Client ID: 4 | arrivalTime= 6 | serviceTime= 1] waiting time: 1
+
+Queue 2: 
+[Client ID: 1 | arrivalTime= 7 | serviceTime= 2] waiting time: 2
+
+
+
+Time 9
+
+Waiting clients: []
+
+Queue 1: 
+closed
+
+Queue 2: 
+[Client ID: 1 | arrivalTime= 7 | serviceTime= 1] waiting time: 1
+
+
+
+Time 10
+
+Waiting clients: []
+
+Queue 1: 
+closed
+
+Queue 2: 
+closed
+
+
+
+Total waiting time: 12
+
+Total service time: 12
+
+Average waiting time: 3.0
+
+Average service time: 3.0
+
+Peak hour: 2
+
+Maximum clients in queues: 1
 
